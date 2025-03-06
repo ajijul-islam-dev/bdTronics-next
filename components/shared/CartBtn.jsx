@@ -12,13 +12,9 @@ const CartBtn = () => {
 
   return (
     <div>
-      <button
-        variant={"secondary"}
-        onClick={() => setIsOpen(true)}
-        className="bg-secondary p-2 rounded-md hover:bg-gray-200 text-2xl flex items-center justify-center"
-      >
+      <span className="bg-secondary p-2 rounded-md hover:bg-gray-200 text-2xl flex items-center justify-center">
         <IoCartOutline />
-      </button>
+      </span>
       {/* <Drawer isOpen={isOpen} setIsOpen={setIsOpen}/> */}
     </div>
   );

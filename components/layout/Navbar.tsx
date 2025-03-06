@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import CartBtn from "../shared/CartBtn";
+import CartDrawer from "./CartDrawer";
 
 const Navbar = () => {
   return (
@@ -41,7 +42,9 @@ const Navbar = () => {
           <button className="bg-secondary p-2 rounded-md hover:bg-gray-200 text-2xl flex items-center justify-center">
             <IoIosHeartEmpty />
           </button>
-          <CartBtn />
+          <CartDrawer>
+            <CartBtn />
+          </CartDrawer>
           <div className="flex items-center justify-center gap-1">
             <button className="rounded-full bg-primary hover:bg-yellow-400 text-2xl flex items-center justify-center p-2">
               <VscAccount />
