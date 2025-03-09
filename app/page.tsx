@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import BannerSlider from "@/components/layout/BannerSlider";
 import Image from "next/image";
 import TopCategories from "../components/layout/TopCategories";
+import PopularCategories from "../components/layout/PopularCategories";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <TopCategories />
         </div>
       </div>
+      <PopularCategories />
     </div>
   );
 }
