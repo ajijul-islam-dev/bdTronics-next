@@ -7,6 +7,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import CartBtn from "../shared/CartBtn";
 import CartDrawer from "./CartDrawer";
+import MenuDrawer from "./MenuDrawer";
 
 const BottomNavigation = () => {
   return (
@@ -22,10 +23,13 @@ const BottomNavigation = () => {
             <span> {link.title}</span>
           </Link>
         ) : link.title == "Menu" ? (
-          <div key={i} className="flex flex-col items-center justify-center">
+          <MenuDrawer
+            key={i}
+            className="flex flex-col items-center justify-center"
+          >
             <span className="text-2xl">{link.icon}</span>
             <span>{link.title}</span>
-          </div>
+          </MenuDrawer>
         ) : (
           <CartDrawer key={i}>
             <div key={i} className="flex flex-col items-center justify-center">
