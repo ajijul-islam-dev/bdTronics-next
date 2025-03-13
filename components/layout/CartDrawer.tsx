@@ -11,7 +11,7 @@ const CartDrawer = ({ children }) => {
   return (
     <Sheet>
       <SheetTrigger>{children}</SheetTrigger>
-      <SheetContent className="w-[5000px]">
+      <SheetContent className="w-full">
         <SheetHeader>
           <SheetTitle>Are you absolutely sure?</SheetTitle>
           <SheetDescription>

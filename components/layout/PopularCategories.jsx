@@ -17,7 +17,9 @@ const PopularCategories = () => {
     <div>
       <div className="container mx-auto my-5">
         <div className="flex items-center justify-between md:justify-start md:gap-10">
-          <h1 className="text-lg font-semibold">Popular Categories</h1>
+          <h1 className="text-lg md:text-2xl font-semibold">
+            Popular Categories
+          </h1>
           <SeeAll />
         </div>
         <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-5 md:gap-5 my-4">

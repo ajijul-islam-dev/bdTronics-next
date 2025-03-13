@@ -1,10 +1,9 @@
 import logo from "../../public/images/bdtronics_logo_8.webp";
 import { IoIosSearch } from "react-icons/io";
 import { IoIosHeartEmpty } from "react-icons/io";
-import { VscAccount } from "react-icons/vsc";
+import { GoPerson } from "react-icons/go";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "../ui/button";
 import CartBtn from "../shared/CartBtn";
 import CartDrawer from "./CartDrawer";
 
@@ -47,7 +46,7 @@ const Navbar = () => {
           </CartDrawer>
           <div className="flex items-center justify-center gap-1">
             <button className="rounded-full bg-primary hover:bg-yellow-400 text-2xl flex items-center justify-center p-2">
-              <VscAccount />
+              <GoPerson />
             </button>
             <span>My Account</span>
           </div>

@@ -124,3 +124,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* custom css  */
+.custom-bullet {
+  background-color: #ddd !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  background: #ddd;
+  color: #f39c12 !important;
+  border-radius: 50% !important;
+  padding: 15px !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 10px !important;
+}
+.swiper-button-next {
+  margin-left: 40px;
+}
+.swiper-button-prev {
+  margin-right: 40px;
+}
+
+/* Adjust the arrow icons for the next button */
+.swiper-button-next::after {
+  font-size: 16px !important; /* Set the desired size for the icon */
+  color: #f39c12 !important; /* Match the button text color */
+}
+
+/* Adjust the arrow icons for the prev button */
+.swiper-button-prev::after {
+  font-size: 16px !important; /* Set the desired size for the icon */
+  color: #f39c12 !important; /* Match the button text color */
+}

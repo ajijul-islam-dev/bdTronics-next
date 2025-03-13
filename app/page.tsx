@@ -1,22 +1,30 @@
-import CartDrawer from "@/components/layout/CartDrawer";
-import { Button } from "@/components/ui/button";
-import BannerSlider from "@/components/layout/BannerSlider";
-import Image from "next/image";
-import TopCategories from "../components/layout/TopCategories";
 import PopularCategories from "../components/layout/PopularCategories";
+import ProductsSection from "../components/layout/SliderSection";
+import BrandSliderSection from "../components/layout/BrandSliderSection";
+import Banner from "../components/layout/Banner";
+import axios from "axios";
+import { Rating } from "@smastrom/react-rating";
 
-export default function Home() {
+const Home = async () => {
+  const getProducts = async () => {
+    const res = await axios.get("http://localhost:3000/api/products");
+    return res.data.products;
+  };
+
+  const products = await getProducts();
+
   return (
-    <div className="my-14 container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-8  md:my-20 md:gap-2">
-        <div className="md:col-span-6">
-          <BannerSlider />
-        </div>
-        <div className="md:col-span-2">
-          <TopCategories />
-        </div>
-      </div>
+    <div className="my-14 container mx-auto px-2">
+      <Banner />
       <PopularCategories />
+      <BrandSliderSection title={"Shop By Brand"} btnText={"View All"} />
+
+      <ProductsSection
+        title={"Best Seller Product"}
+        btnText={"View All"}
+        items={products}
+      />
     </div>
   );
-}
+};
+export default Home;
