@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { RiHomeLine } from "react-icons/ri";
@@ -5,11 +6,12 @@ import { FiPhoneCall } from "react-icons/fi";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
-import CartBtn from "../shared/CartBtn";
 import CartDrawer from "./CartDrawer";
 import MenuDrawer from "./MenuDrawer";
+import useCartsData from "@/hooks/useCartsData";
 
 const BottomNavigation = () => {
+  const { cartItems } = useCartsData();
   return (
     <div className="grid grid-cols-5 bg-white border-t items-center text-center fixed bottom-0 w-full z-50 md:hidden pt-3">
       {links?.map((link, i) =>
@@ -35,9 +37,11 @@ const BottomNavigation = () => {
               <span className="relative text-2xl">{link.icon}</span>
               <span>
                 {link.title}
-                <div className="bg-primary rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 right-5 p-1">
-                  5
-                </div>
+                {cartItems.length > 0 && (
+                  <div className="bg-primary rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 right-5 p-1">
+                    {cartItems.length}
+                  </div>
+                )}
               </span>
             </div>
           </CartDrawer>

@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useState, useEffect } from "react";
 import useAxios from "../hooks/useAxios";
+import { toast } from "sonner";
 
 export const CartContext = createContext(null);
 
@@ -65,6 +66,9 @@ const CartProvider = ({ children }) => {
         // Number(qty) > 1 ? [...prev, {...cartObj,quantity : Number(qty)}] : [...prev, cartObj] ;
         return [...prev, { ...cartObj, quantity: Number(qty) }];
       }
+    });
+    return toast("Added to the cart", {
+      description: `${product?.name} has been added to the cart`,
     });
   };
 
