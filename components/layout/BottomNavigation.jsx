@@ -11,7 +11,7 @@ import MenuDrawer from "./MenuDrawer";
 
 const BottomNavigation = () => {
   return (
-    <div className="grid grid-cols-5 bg-white border-t items-center text-center fixed bottom-0 w-full z-50 md:hidden">
+    <div className="grid grid-cols-5 bg-white border-t items-center text-center fixed bottom-0 w-full z-50 md:hidden pt-3">
       {links?.map((link, i) =>
         link.path ? (
           <Link
@@ -23,18 +23,22 @@ const BottomNavigation = () => {
             <span> {link.title}</span>
           </Link>
         ) : link.title == "Menu" ? (
-          <MenuDrawer
-            key={i}
-            className="flex flex-col items-center justify-center"
-          >
-            <span className="text-2xl">{link.icon}</span>
-            <span>{link.title}</span>
+          <MenuDrawer key={i}>
+            <div className="flex flex-col items-center justify-center">
+              <span className="text-2xl">{link.icon}</span>
+              <span>{link.title}</span>
+            </div>
           </MenuDrawer>
         ) : (
           <CartDrawer key={i}>
-            <div key={i} className="flex flex-col items-center justify-center">
-              <span className="text-2xl">{link.icon}</span>
-              <span>{link.title}</span>
+            <div key={i} className="flex flex-col items-center justify-center ">
+              <span className="relative text-2xl">{link.icon}</span>
+              <span>
+                {link.title}
+                <div className="bg-primary rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 right-5 p-1">
+                  5
+                </div>
+              </span>
             </div>
           </CartDrawer>
         )

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import Rating from "@mui/material/Rating";
 import CartBtn from "../shared/CartBtn";
 import { IoCartOutline } from "react-icons/io5";
@@ -10,12 +10,14 @@ import Image from "next/image.js";
 import { Button } from "../ui/button";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { CartContext } from "@/services/CartProvider";
 // import useCartsData from "../hooks/useCartsData.js";
 
 const ProductCard = ({ item: product }) => {
   const [isVisible, setIsVisible] = useState(false);
   // const { handleCart } = useCartsData();
 
+  const { handleCart } = useContext(CartContext);
   const [rating, setRating] = useState(3.5);
 
   const handleFav = (e) => {
@@ -28,7 +30,7 @@ const ProductCard = ({ item: product }) => {
     <div
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
-      className="flex flex-col items-center space-y-6 text-center p-3 bg-white shadow-lg rounded-lg relative overflow-hidden transition-all my-5"
+      className="flex flex-col items-center space-y-3 md:space-y-6 text-center p-3 bg-white shadow-lg rounded-lg relative overflow-hidden transition-all my-5"
     >
       {/* Product Image */}
       <Link href={`/products/${product?.id || 1}`} className="overflow-hidden">
@@ -42,7 +44,7 @@ const ProductCard = ({ item: product }) => {
           alt={product?.name || "Product Image"}
         />
       </Link>
-      Ra
+
       {/* Product Name */}
       <p className="text-sm font-medium mt-2">
         {product?.name || "UNI-T UT33B+ Palm Size Digital Pocket Multimeter"}
@@ -57,7 +59,7 @@ const ProductCard = ({ item: product }) => {
         />
       </div>
       {/* Price */}
-      <div className="flex items-center justify-between gap-6">
+      <div className="flex items-center justify-between md:gap-5">
         <h4 className="text-sm font-semibold text-primary">
           BDT {product?.price ? product.price.toFixed(2) : "325.10"}
         </h4>

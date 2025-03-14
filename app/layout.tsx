@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BottomNavigation from "../components/layout/BottomNavigation";
+import CartProvider from "../services/CartProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <BottomNavigation />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <BottomNavigation />
+        </CartProvider>
       </body>
     </html>
   );
