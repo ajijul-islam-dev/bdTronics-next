@@ -24,13 +24,22 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed bg-white top-0 right-0 left-0 mx-auto z-20 shadow px-2 pt-2 ${
-        scrollY > 0 && "pb-2"
-      }`}
+      className={`fixed bg-white top-0 right-0 left-0 mx-auto z-20 shadow px-2  pt-2 ${
+        scrollY > 0 ? "pb-2" : "pb-0"
+      } `}
     >
       <div className="md:container mx-auto">
         <div className=" flex items-center justify-between gap-5 md:gap-0">
-          <div className="">
+          <Link href="/" className="md:hidden">
+            <Image
+              width={200}
+              height={100}
+              className="w-32"
+              src={logo}
+              alt="logo"
+            />
+          </Link>
+          <div className=" hidden pb-2 md:block">
             {scrollY === 0 ? (
               <Link href="/">
                 <Image
@@ -76,7 +85,7 @@ const Navbar = () => {
           </div>
         </div>
         {scrollY === 0 && (
-          <div className="flex items-center justify-start gap-4 mt-4 font-semibold px-2">
+          <div className="md:flex items-center justify-start gap-4 mt-4 font-semibold px-2 hidden">
             <div className="self-end">
               <ShopByCategoryBtn bottom />
             </div>
@@ -126,7 +135,7 @@ const ShopByCategoryBtn = ({ bottom }) => {
     <div
       className={`bg-primary flex items-center justify-center gap-2 rounded-md ${
         bottom && "rounded-bl-none rounded-br-none"
-      } p-3`}
+      } md:p-3 p-2 $`}
     >
       <div className="relative">
         <MenuDrawer>
