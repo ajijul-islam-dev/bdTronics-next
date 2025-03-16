@@ -4,7 +4,11 @@ import React from "react";
 
 const DetailsPage = () => {
   const params = useParams();
-  return <div className="my-20">Product details Page {params.id}</div>;
+  return (
+    <div className="my-20 container mx-auto px-2">
+      Product details Page {params.id}
+    </div>
+  );
 };
 
 export default DetailsPage;

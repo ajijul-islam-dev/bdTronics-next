@@ -39,7 +39,7 @@ const Navbar = () => {
               alt="logo"
             />
           </Link>
-          <div className=" hidden pb-2 md:block">
+          <div className=" hidden md:block">
             {scrollY === 0 ? (
               <Link href="/">
                 <Image

@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <CartProvider>
           <Navbar />
-          {children}
+          <div className="md:my-[130.2px]">{children}</div>
           <Footer />
           <BottomNavigation />
         </CartProvider>
