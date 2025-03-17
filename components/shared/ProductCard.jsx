@@ -23,7 +23,6 @@ const ProductCard = ({ item: product }) => {
   const handleFav = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Added to Wishlist");
   };
 
   return (
@@ -37,7 +36,9 @@ const ProductCard = ({ item: product }) => {
         <Image
           width={400}
           height={800}
-          className={`w-full h-40 duration-500 ${isVisible && "scale-150"}`}
+          className={`w-full h-32 md:h-40 duration-500 ${
+            isVisible && "scale-150"
+          }`}
           src={
             "https://img.freepik.com/free-photo/electronic-computer-motherboard-wallpaper_1409-5907.jpg"
           }
@@ -71,7 +72,7 @@ const ProductCard = ({ item: product }) => {
       <div
         className={` ${
           !isVisible && "hidden"
-        } duration-500 absolute bottom-0 left-0 right-0 mx-auto flex flex-col justify-center items-center gap-1 p-2 bg-white shadow-md transition-all`}
+        } duration-500 absolute bottom-0 left-0 right-0 mx-auto flex flex-col justify-center items-center gap-1 p-2 bg-white shadow-md transition-all w-full`}
       >
         <Button
           onClick={(e) => handleCart(e, product)}

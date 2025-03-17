@@ -7,7 +7,6 @@ export const CartContext = createContext(null);
 
 const CartProvider = ({ children }) => {
   const products = useAxios("/products"); // Fetch the full products array
-  console.log(products);
   const [cart, setCart] = useState([]);
 
   // Map cart items to full product details
