@@ -2,7 +2,6 @@
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import ProductImageSlide from "../../../components/layout/ProductImageSlide";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import useCartsData from "@/hooks/useCartsData";
 import { Rating } from "@smastrom/react-rating";

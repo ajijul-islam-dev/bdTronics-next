@@ -3,7 +3,6 @@ import ProductsSection from "../components/layout/SliderSection";
 import BrandSliderSection from "../components/layout/BrandSliderSection";
 import Banner from "../components/layout/Banner";
 import axios from "axios";
-import { Rating } from "@smastrom/react-rating";
 
 const Home = async () => {
   const getProducts = async () => {
