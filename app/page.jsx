@@ -1,16 +1,26 @@
+"use client";
+import { useEffect, useState } from "react";
 import PopularCategories from "../components/layout/PopularCategories";
 import ProductsSection from "../components/layout/SliderSection";
 import BrandSliderSection from "../components/layout/BrandSliderSection";
 import Banner from "../components/layout/Banner";
 import axios from "axios";
 
-const Home = async () => {
-  const getProducts = async () => {
-    const res = await axios.get("http://localhost:3000/api/products");
-    return res.data.products;
-  };
+const Home = () => {
+  const [products, setProducts] = useState([]);
 
-  const products = await getProducts();
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get("/api/products");
+        setProducts(res.data.products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    getProducts();
+  }, []);
 
   return (
     <div className="my-14 container mx-auto px-2">
@@ -26,4 +36,5 @@ const Home = async () => {
     </div>
   );
 };
+
 export default Home;

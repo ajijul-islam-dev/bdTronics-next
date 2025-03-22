@@ -3,7 +3,7 @@ import Products from "../../../../database/models/Products";
 
 export const GET = async (req, { params }) => {
   try {
-    const { id } = params;
+    const { id } = await params;
     await connectDb();
 
     const product = await Products.findOne({ id });

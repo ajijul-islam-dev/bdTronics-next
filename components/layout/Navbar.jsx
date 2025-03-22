@@ -1,35 +1,38 @@
 "use client";
-import logo from "../../public/images/bdtronics_logo_8.webp";
-import { IoIosSearch } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { GoPerson } from "react-icons/go";
-import Link from "next/link";
-import Image from "next/image";
-import CartBtn from "../shared/CartBtn";
-import CartDrawer from "./CartDrawer";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import logo from "../../public/images/bdtronics_logo_8.webp";
+import { IoIosSearch, IoIosHeartEmpty } from "react-icons/io";
+import { GoPerson } from "react-icons/go";
 import { HiOutlineMenu } from "react-icons/hi";
-import MenuDrawer from "./MenuDrawer";
 import { FaFacebook } from "react-icons/fa";
 import { BsYoutube } from "react-icons/bs";
+import CartBtn from "../shared/CartBtn";
+import CartDrawer from "./CartDrawer";
+import MenuDrawer from "./MenuDrawer";
 
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       setScrollY(window.scrollY);
-    });
-  }, [scrollY]);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup function
+  }, []);
 
   return (
     <nav
-      className={`fixed bg-white top-0 right-0 left-0 mx-auto z-20 shadow px-2  pt-2 ${
-        scrollY > 0 ? "pb-2" : "pb-0"
-      } `}
+      className={`fixed bg-white top-0 right-0 left-0 mx-auto z-20 shadow px-2 transition-all duration-300 ${
+        scrollY > 0 ? "pt-1 pb-1" : "pt-3 pb-3"
+      }`}
     >
       <div className="md:container mx-auto">
-        <div className=" flex items-center justify-between gap-5 md:gap-0">
+        <div className="flex items-center justify-between gap-5 md:gap-0">
+          {/* Logo */}
           <Link href="/" className="md:hidden">
             <Image
               width={200}
@@ -39,7 +42,7 @@ const Navbar = () => {
               alt="logo"
             />
           </Link>
-          <div className=" hidden md:block">
+          <div className="hidden md:block">
             {scrollY === 0 ? (
               <Link href="/">
                 <Image
@@ -54,6 +57,8 @@ const Navbar = () => {
               <ShopByCategoryBtn bottom={false} />
             )}
           </div>
+
+          {/* Search Bar */}
           <div className="md:w-[60%]">
             <form className="grid grid-cols-12 border border-primary rounded-full overflow-hidden">
               <input
@@ -69,6 +74,8 @@ const Navbar = () => {
               </button>
             </form>
           </div>
+
+          {/* Icons */}
           <div className="hidden md:flex items-center justify-end gap-5">
             <button className="bg-secondary p-2 rounded-md hover:bg-gray-200 text-2xl flex items-center justify-center">
               <IoIosHeartEmpty />
@@ -84,6 +91,8 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Navigation Links */}
         {scrollY === 0 && (
           <div className="md:flex items-center justify-start gap-4 mt-4 font-semibold px-2 hidden">
             <div className="self-end">
@@ -134,8 +143,8 @@ const ShopByCategoryBtn = ({ bottom }) => {
   return (
     <div
       className={`bg-primary flex items-center justify-center gap-2 rounded-md ${
-        bottom && "rounded-bl-none rounded-br-none"
-      } md:p-3 p-2 $`}
+        bottom ? "rounded-bl-none rounded-br-none" : ""
+      } md:p-3 p-2 transition-all duration-300`}
     >
       <div className="relative">
         <MenuDrawer>
@@ -143,7 +152,7 @@ const ShopByCategoryBtn = ({ bottom }) => {
           <div className="w-5 h-5 bg-blue-500 rounded-full animate-ping absolute top-1"></div>
         </MenuDrawer>
       </div>
-      <p className="text- font-semibold">Shop by Categories</p>
+      <p className="font-semibold">Shop by Categories</p>
     </div>
   );
 };
