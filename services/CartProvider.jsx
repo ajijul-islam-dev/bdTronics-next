@@ -21,22 +21,26 @@ const CartProvider = ({ children }) => {
     })
     .filter(Boolean); // Remove `null` values if no match is found
 
-  // Load cart from localStorage on component mount
+  // Load cart from localStorage on component mount (client-side)
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      try {
-        setCart(JSON.parse(storedCart));
-      } catch (error) {
-        console.error("Error parsing cart data:", error);
-        setCart([]); // Reset to an empty array if parsing fails
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        try {
+          setCart(JSON.parse(storedCart));
+        } catch (error) {
+          console.error("Error parsing cart data:", error);
+          setCart([]); // Reset to an empty array if parsing fails
+        }
       }
     }
   }, []);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (client-side)
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, [cart]);
 
   // Add or update cart items
@@ -62,7 +66,6 @@ const CartProvider = ({ children }) => {
         );
       } else {
         // Add the new product to the cart
-        // Number(qty) > 1 ? [...prev, {...cartObj,quantity : Number(qty)}] : [...prev, cartObj] ;
         return [...prev, { ...cartObj, quantity: Number(qty) }];
       }
     });
@@ -71,7 +74,7 @@ const CartProvider = ({ children }) => {
     });
   };
 
-  //remove cart items
+  // Remove cart items
   const handleCartRemove = (product) => {
     const remainingCart = cart.filter((c) => c.productId !== product.id);
     setCart(remainingCart);

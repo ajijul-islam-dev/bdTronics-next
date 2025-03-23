@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed bg-white top-0 right-0 left-0 mx-auto z-20 shadow px-2 transition-all duration-300 ${
-        scrollY > 0 ? "pt-1 pb-1" : "pt-3 pb-3"
+        scrollY > 0 ? "py-2 md:pt-3" : "pt-3 pb-2 md:pb-0"
       }`}
     >
       <div className="md:container mx-auto">
@@ -62,12 +62,12 @@ const Navbar = () => {
           <div className="md:w-[60%]">
             <form className="grid grid-cols-12 border border-primary rounded-full overflow-hidden">
               <input
-                className="col-span-9 outline-none py-1 px-4"
+                className="col-span-10 md:col-span-11 outline-none py-2.5 px-4"
                 type="text"
                 placeholder="Search here"
               />
               <button
-                className="col-span-3 bg-primary text-2xl flex items-center justify-center md:py-2"
+                className="col-span-2 md:col-span-1 bg-primary text-2xl flex items-center justify-center md:py-2"
                 type="submit"
               >
                 <IoIosSearch />
@@ -94,40 +94,40 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         {scrollY === 0 && (
-          <div className="md:flex items-center justify-start gap-4 mt-4 font-semibold px-2 hidden">
+          <div className="md:flex items-center justify-start lg:gap-4 gap-2 mt-4 font-semibold px-2 hidden">
             <div className="self-end">
               <ShopByCategoryBtn bottom />
             </div>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               New Products
             </Link>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               How to Order
             </Link>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               3D Printing Services
             </Link>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               Solar Calculator
             </Link>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               Blog
             </Link>
             <Link
               className="hover:text-primary flex items-center justify-center gap-1"
               href={"/"}
             >
-              <FaFacebook className="text-blue-500 text-2xl" />
+              <FaFacebook className="text-blue-500 text-sm lg:text-2xl" />
               <p>Page</p>
             </Link>
             <Link
               className="hover:text-primary flex items-center justify-center gap-1"
               href={"/"}
             >
-              <BsYoutube className="text-red-500 text-2xl" />
+              <BsYoutube className="text-red-500 text-sm lg:text-2xl" />
               <p>Channel</p>
             </Link>
-            <Link className="hover:text-primary" href={"/"}>
+            <Link className="hover:text-primary text-sm" href={"/"}>
               Contacts
             </Link>
           </div>
@@ -144,15 +144,15 @@ const ShopByCategoryBtn = ({ bottom }) => {
     <div
       className={`bg-primary flex items-center justify-center gap-2 rounded-md ${
         bottom ? "rounded-bl-none rounded-br-none" : ""
-      } md:p-3 p-2 transition-all duration-300`}
+      } px-2.5 py-1.5 lg:py-2 transition-all duration-300`}
     >
       <div className="relative">
         <MenuDrawer>
-          <HiOutlineMenu className="text-2xl" />
+          <HiOutlineMenu className="text-xl lg:text-2xl" />
           <div className="w-5 h-5 bg-blue-500 rounded-full animate-ping absolute top-1"></div>
         </MenuDrawer>
       </div>
-      <p className="font-semibold">Shop by Categories</p>
+      <p className="text-sm font-semibold">Shop by Categories</p>
     </div>
   );
 };

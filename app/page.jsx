@@ -5,6 +5,7 @@ import ProductsSection from "../components/layout/SliderSection";
 import BrandSliderSection from "../components/layout/BrandSliderSection";
 import Banner from "../components/layout/Banner";
 import axios from "axios";
+import ReviewSlideSection from "../components/layout/ReviewSlideSection";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -27,7 +28,7 @@ const Home = () => {
       <Banner />
       <PopularCategories />
       <BrandSliderSection title={"Shop By Brand"} btnText={"View All"} />
-
+      <ReviewSlideSection title="Reviews from Our Customers" />
       <ProductsSection
         title={"Best Seller Product"}
         btnText={"View All"}
